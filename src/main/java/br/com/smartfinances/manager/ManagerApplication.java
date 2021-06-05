@@ -10,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.persistence.Access;
 import java.math.BigDecimal;
@@ -17,7 +20,7 @@ import java.time.LocalDate;
 import java.util.Arrays;
 
 @SpringBootApplication
-public class ManagerApplication implements CommandLineRunner {
+public class ManagerApplication implements CommandLineRunner{
 
 	@Autowired
 	TransactionRepository transactionRepository;
@@ -26,15 +29,29 @@ public class ManagerApplication implements CommandLineRunner {
 	AccountRepository accountRepository;
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(ManagerApplication.class, args);
 	}
+
 
 	@Override
 	public void run(String... args) throws Exception {
 
-		Account accout = new Account(null,"EasyInvest");
-		Account salva = accountRepository.save(accout);
-		Transaction transaction = new Transaction(null, LocalDate.now(),"BBAS3",new BigDecimal(30.00),200, TransctionType.BUY,salva);
-		transactionRepository.save(transaction);
+		for (int i=1; i <= 100;i++){
+			var account = new Account();
+			account.setName("Account"+i);
+			accountRepository.save(account);
+		}
+
+	}
+
+	@Bean
+	public WebMvcConfigurer corsConfigurer() {
+		return new WebMvcConfigurer() {
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				registry.addMapping("/account").allowedOrigins("http://localhost:3000");
+			}
+		};
 	}
 }

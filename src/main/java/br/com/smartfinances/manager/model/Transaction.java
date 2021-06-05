@@ -1,7 +1,12 @@
 package br.com.smartfinances.manager.model;
 
 import br.com.smartfinances.manager.model.enums.TransctionType;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -9,8 +14,10 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
-@Data
-public class Transaction {
+@Getter
+@Setter
+public class Transaction implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +30,7 @@ public class Transaction {
     private TransctionType transctionType;
 
     @ManyToOne
+    @JoinColumn(name="account_id")
     private Account account;
 
     public Transaction(Long id, LocalDate dateTransaction, String assetName, BigDecimal price, Integer amount, TransctionType transctionType, Account account) {
@@ -33,5 +41,8 @@ public class Transaction {
         this.amount = amount;
         this.transctionType = transctionType;
         this.account = account;
+    }
+
+    public Transaction() {
     }
 }

@@ -1,10 +1,7 @@
 package br.com.smartfinances.manager;
 
-import br.com.smartfinances.manager.controller.TransactionController;
-import br.com.smartfinances.manager.model.Account;
-import br.com.smartfinances.manager.model.Transaction;
-import br.com.smartfinances.manager.model.enums.TransctionType;
-import br.com.smartfinances.manager.repository.AccountRepository;
+import br.com.smartfinances.manager.model.Wallet;
+import br.com.smartfinances.manager.repository.WalletRepository;
 import br.com.smartfinances.manager.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -14,11 +11,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import javax.persistence.Access;
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.Arrays;
-
 @SpringBootApplication
 public class ManagerApplication implements CommandLineRunner{
 
@@ -26,7 +18,7 @@ public class ManagerApplication implements CommandLineRunner{
 	TransactionRepository transactionRepository;
 
 	@Autowired
-	AccountRepository accountRepository;
+	WalletRepository walletRepository;
 
 	public static void main(String[] args) {
 
@@ -38,9 +30,9 @@ public class ManagerApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 
 		for (int i=1; i <= 100;i++){
-			var account = new Account();
-			account.setName("Account"+i);
-			accountRepository.save(account);
+			var wallet = new Wallet();
+			wallet.setName("Wallet - "+Math.random());
+			walletRepository.save(wallet);
 		}
 
 	}
@@ -50,7 +42,7 @@ public class ManagerApplication implements CommandLineRunner{
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/account").allowedOrigins("http://localhost:3000");
+				registry.addMapping("/wallet").allowedOrigins("http://localhost:3000");
 			}
 		};
 	}

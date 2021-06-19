@@ -1,10 +1,6 @@
 package br.com.smartfinances.manager.model;
 
 import br.com.smartfinances.manager.model.enums.TransctionType;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,17 +26,17 @@ public class Transaction implements Serializable {
     private TransctionType transctionType;
 
     @ManyToOne
-    @JoinColumn(name="account_id")
-    private Account account;
+    @JoinColumn(name="wallet_id")
+    private Wallet wallet;
 
-    public Transaction(Long id, LocalDate dateTransaction, String assetName, BigDecimal price, Integer amount, TransctionType transctionType, Account account) {
+    public Transaction(Long id, LocalDate dateTransaction, String assetName, BigDecimal price, Integer amount, TransctionType transctionType, Wallet wallet) {
         this.id = id;
         this.dateTransaction = dateTransaction;
         this.assetName = assetName;
         this.price = price;
         this.amount = amount;
         this.transctionType = transctionType;
-        this.account = account;
+        this.wallet = wallet;
     }
 
     public Transaction() {

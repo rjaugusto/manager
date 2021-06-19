@@ -4,9 +4,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.BAD_REQUEST)
-public class AccountIsAlreadyRegisteredException extends Throwable {
+public class WalletIsAlreadyRegisteredException extends Throwable {
 
-    public AccountIsAlreadyRegisteredException(String accountName) {
+    public WalletIsAlreadyRegisteredException(String accountName) {
         super(String.format("Account with name %s already registered in the system.", accountName));
     }
 }

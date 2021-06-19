@@ -15,7 +15,7 @@ import java.util.List;
 @Getter
 @Setter
 @Data
-public class Account implements Serializable {
+public class Wallet implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -23,15 +23,15 @@ public class Account implements Serializable {
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy="account")
+    @OneToMany(mappedBy="wallet")
     private List<Transaction> transactions = new ArrayList<>();
 
-    public Account() {
+    public Wallet() {
     }
 
-    public Account(String rafael) {
+    public Wallet(String name) {
     }
 
-    public Account(Long id, String name,List<Transaction> transactions) {
+    public Wallet(Long id, String name, List<Transaction> transactions) {
     }
 }

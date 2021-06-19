@@ -1,10 +1,8 @@
 package br.com.smartfinances.manager.model.dto;
 
-import br.com.smartfinances.manager.model.Account;
 import br.com.smartfinances.manager.model.Transaction;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import net.bytebuddy.implementation.bind.annotation.Empty;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
@@ -13,7 +11,7 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
-public class AccountDTO {
+public class WalletDTO {
 
     @Null
     private Long id;
@@ -24,7 +22,7 @@ public class AccountDTO {
     @Null
     private List<Transaction> transactions = new ArrayList<>();
 
-    public AccountDTO(Long id,String name){
+    public WalletDTO(Long id, String name){
         this.id = id;
         this.name = name;
     }

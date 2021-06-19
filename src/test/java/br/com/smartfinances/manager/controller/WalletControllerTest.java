@@ -1,8 +1,9 @@
 package br.com.smartfinances.manager.controller;
 
-import br.com.smartfinances.manager.builder.AccountDTOBuilder;
-import br.com.smartfinances.manager.model.dto.AccountDTO;
-import br.com.smartfinances.manager.service.AccountService;
+import br.com.smartfinances.manager.builder.WalletDTOBuilder;
+import br.com.smartfinances.manager.exception.WalletIsAlreadyRegisteredException;
+import br.com.smartfinances.manager.model.dto.WalletDTO;
+import br.com.smartfinances.manager.service.WalletService;
 import br.com.smartfinances.manager.utils.JsonConvertionUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,7 +16,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
-import br.com.smartfinances.manager.exception.*;
 
 
 import static org.hamcrest.core.Is.is;
@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(MockitoExtension.class)
-public class AccountControllerTest {
+public class WalletControllerTest {
 
     private static final String ACCOUNT_API_URL_PATH = "/account";
     private static final long VALID_BEER_ID = 1L;
@@ -36,10 +36,10 @@ public class AccountControllerTest {
     private MockMvc mockMvc;
 
     @InjectMocks
-    private AccountController accountController;
+    private WalletController accountController;
 
     @Mock
-    private AccountService accountService;
+    private WalletService walletService;
 
     @BeforeEach
     void setUp() {
@@ -50,33 +50,33 @@ public class AccountControllerTest {
     }
 
     @Test
-    void whenPOSTIsCalledThenAAccountIsCreated() throws Exception {
+    void whenPOSTIsCalledThenAAccountIsCreated() throws Exception, WalletIsAlreadyRegisteredException {
         // given
-        AccountDTO accountDTO = AccountDTOBuilder.builder().build().toAccountDTO();;
+        WalletDTO walletDTO = WalletDTOBuilder.builder().build().toAccountDTO();;
 
         // when
-        when(accountService.createAccount(accountDTO)).thenReturn(accountDTO);
+        when(walletService.createWallet(walletDTO)).thenReturn(walletDTO);
 
         // then
         mockMvc.perform(post(ACCOUNT_API_URL_PATH)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(JsonConvertionUtils.asJsonString(accountDTO)))
+                .content(JsonConvertionUtils.asJsonString(walletDTO)))
                 .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.name", is(accountDTO.getName())))
-                .andExpect(jsonPath("$.transactions", is(accountDTO.getTransactions())));
+                .andExpect(jsonPath("$.name", is(walletDTO.getName())))
+                .andExpect(jsonPath("$.transactions", is(walletDTO.getTransactions())));
 
     }
 
     @Test
     void whenPOSTIsCalledWithoutAAttributeThenAValidationErrorIsThrow() throws Exception {
         // given
-        AccountDTO accountDTO = AccountDTOBuilder.builder().build().toAccountDTO();;
-        accountDTO.setName(null);
+        WalletDTO walletDTO = WalletDTOBuilder.builder().build().toAccountDTO();;
+        walletDTO.setName(null);
 
         // then
         mockMvc.perform(post(ACCOUNT_API_URL_PATH)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(JsonConvertionUtils.asJsonString(accountDTO)))
+                .content(JsonConvertionUtils.asJsonString(walletDTO)))
                 .andExpect(status().isBadRequest());
 
     }

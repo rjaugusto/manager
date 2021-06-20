@@ -27,7 +27,7 @@ public class WalletController {
         this.walletService = walletService;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "http://localhost:8080")
     @GetMapping(path = "/list")
     public List<Wallet> listAll(){
         return  walletRepository.findAll();

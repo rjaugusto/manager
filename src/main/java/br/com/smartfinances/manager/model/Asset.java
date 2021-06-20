@@ -1,8 +1,6 @@
 package br.com.smartfinances.manager.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,25 +14,30 @@ import java.util.List;
 @Getter
 @Setter
 @Data
-public class Wallet implements Serializable {
+public class Asset implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private Category category;
 
     @JsonIgnore
-    @OneToMany(mappedBy="wallet")
-    private List<Asset> assets = new ArrayList<>();
+    @OneToMany(mappedBy="asset")
+    private List<Transaction> transactions = new ArrayList<>();
 
-    public Wallet() {
-    }
+    @ManyToOne
+    @JoinColumn(name="wallet_id")
+    private Wallet wallet;
 
-    public Wallet(String name) {
+    public Asset(String name, Category category, Wallet wallet) {
         this.name = name;
+        this.category = category;
+        this.wallet = wallet;
     }
 
-    public Wallet(Long id, String name) {
+    public Asset() {
+
     }
 }

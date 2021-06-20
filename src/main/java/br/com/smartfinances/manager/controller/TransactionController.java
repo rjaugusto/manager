@@ -13,7 +13,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "transaction")
-//@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class TransactionController {
 
     private final TransactionRepository transactionRepository;

@@ -19,26 +19,23 @@ public class Transaction implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDate dateTransaction;
-    private String assetName;
     private BigDecimal price;
     private Integer amount;
     @Enumerated(EnumType.STRING)
     private TransctionType transctionType;
 
     @ManyToOne
-    @JoinColumn(name="wallet_id")
-    private Wallet wallet;
+    @JoinColumn(name="asset_id")
+    private Asset asset;
 
-    public Transaction(Long id, LocalDate dateTransaction, String assetName, BigDecimal price, Integer amount, TransctionType transctionType, Wallet wallet) {
-        this.id = id;
+    public Transaction() {
+    }
+
+    public Transaction(LocalDate dateTransaction, BigDecimal price, Integer amount, TransctionType transctionType, Asset asset) {
         this.dateTransaction = dateTransaction;
-        this.assetName = assetName;
         this.price = price;
         this.amount = amount;
         this.transctionType = transctionType;
-        this.wallet = wallet;
-    }
-
-    public Transaction() {
+        this.asset = asset;
     }
 }

@@ -1,5 +1,6 @@
 package br.com.smartfinances.manager.model.dto;
 
+import br.com.smartfinances.manager.model.Asset;
 import br.com.smartfinances.manager.model.Transaction;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,7 +21,7 @@ public class WalletDTO {
     private String name;
 
     @Null
-    private List<Transaction> transactions = new ArrayList<>();
+    private List<Asset> assets = new ArrayList<>();
 
     public WalletDTO(Long id, String name){
         this.id = id;
@@ -43,12 +44,10 @@ public class WalletDTO {
         this.name = name;
     }
 
-    public List<Transaction> getTransactions() {
-        return transactions;
+    public List<Asset> getAssets() {
+        return assets;
     }
-
-    public void setTransactions(List<Transaction> transactions) {
-        this.transactions = transactions;
+    public void setAssets(List<Asset> assets) {
+        this.assets = assets;
     }
-
 }

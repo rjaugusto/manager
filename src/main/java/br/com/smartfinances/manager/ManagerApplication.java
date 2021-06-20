@@ -1,6 +1,11 @@
 package br.com.smartfinances.manager;
 
+import br.com.smartfinances.manager.model.Asset;
+import br.com.smartfinances.manager.model.Category;
+import br.com.smartfinances.manager.model.Transaction;
 import br.com.smartfinances.manager.model.Wallet;
+import br.com.smartfinances.manager.model.enums.TransctionType;
+import br.com.smartfinances.manager.repository.AssetRepository;
 import br.com.smartfinances.manager.repository.WalletRepository;
 import br.com.smartfinances.manager.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,14 +16,19 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
+
 @SpringBootApplication
 public class ManagerApplication implements CommandLineRunner{
 
 	@Autowired
 	TransactionRepository transactionRepository;
-
 	@Autowired
 	WalletRepository walletRepository;
+	@Autowired
+	AssetRepository assetRepository;
 
 	public static void main(String[] args) {
 
@@ -27,13 +37,24 @@ public class ManagerApplication implements CommandLineRunner{
 
 
 	@Override
-	public void run(String... args) throws Exception {
+	public void run(String... args){
 
-		for (int i=1; i <= 100;i++){
-			var wallet = new Wallet();
-			wallet.setName("Wallet - "+Math.random());
-			walletRepository.save(wallet);
-		}
+		Wallet wallet = new Wallet("Carteira Pessoal");
+		Wallet walletEasy = new Wallet("Carteira EasyInvest");
+
+		walletRepository.save(wallet);
+		walletRepository.save(walletEasy);
+
+		Asset bitcoin = new Asset("BitCoin", Category.CryptoCurrency,wallet);
+		Asset bbas3 = new Asset("BBAS3",Category.Stock,walletEasy);
+		assetRepository.save(bitcoin);
+		assetRepository.save(bbas3);
+
+		Transaction transaction = new Transaction(LocalDate.now(),new BigDecimal(50.62),100,TransctionType.BUY,bitcoin);
+		transactionRepository.save(transaction);
+
+		Transaction transactionEasy = new Transaction(LocalDate.now(),new BigDecimal(50.62),100,TransctionType.BUY,bbas3);
+		transactionRepository.save(transactionEasy);
 
 	}
 

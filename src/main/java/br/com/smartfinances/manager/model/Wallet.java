@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -16,6 +17,7 @@ import java.util.List;
 @Getter
 @Setter
 @Data
+@Component
 public class Wallet implements Serializable {
     private static final long serialVersionUID = 1L;
 

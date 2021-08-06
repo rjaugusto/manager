@@ -30,6 +30,12 @@ public class ManagerApplication implements CommandLineRunner{
 	@Autowired
 	AssetRepository assetRepository;
 
+	@Autowired
+	Wallet wallet;
+
+	@Autowired
+	Wallet walletEasy;
+
 	public static void main(String[] args) {
 
 		SpringApplication.run(ManagerApplication.class, args);
@@ -39,8 +45,11 @@ public class ManagerApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args){
 
-		Wallet wallet = new Wallet("Carteira Pessoal");
-		Wallet walletEasy = new Wallet("Carteira EasyInvest");
+		//Wallet wallet = new Wallet("Carteira Pessoal");
+		//Wallet walletEasy = new Wallet("Carteira EasyInvest");
+
+		wallet.setName("Carteira Pessoal");
+		walletEasy.setName("Carteira EasyInvest");
 
 		walletRepository.save(wallet);
 		walletRepository.save(walletEasy);

@@ -7,6 +7,7 @@ import br.com.smartfinances.manager.service.WalletService;
 import br.com.smartfinances.manager.utils.JsonConvertionUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestTemplate;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -48,7 +49,7 @@ public class WalletControllerTest {
                 .setViewResolvers((s, locale) -> new MappingJackson2JsonView())
                 .build();
     }
-
+    
     @Test
     void whenPOSTIsCalledThenAAccountIsCreated() throws Exception, WalletIsAlreadyRegisteredException {
         // given

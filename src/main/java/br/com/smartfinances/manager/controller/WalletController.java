@@ -22,20 +22,23 @@ public class WalletController {
     private final WalletService walletService;
 
     @Autowired
-    public WalletController(final WalletRepository walletRepository, final WalletService walletService){
+    public WalletController(final WalletRepository walletRepository, final WalletService walletService) {
         this.walletRepository = walletRepository;
         this.walletService = walletService;
     }
 
-    @CrossOrigin(origins = "http://localhost:8080")
+    @CrossOrigin(origins = "*")
     @GetMapping(path = "/list")
-    public List<Wallet> listAll(){
-        return  walletRepository.findAll();
+    public List<Wallet> listAll() {
+        return walletRepository.findAll();
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public WalletDTO createAccout(@Valid WalletDTO walletDTO) throws WalletIsAlreadyRegisteredException {
+
+
+
         return walletService.createWallet(walletDTO);
     }
 

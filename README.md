@@ -1,18 +1,40 @@
-# Manager
+# Gerenciador de Investimentos
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.3.
+Esse é um projeto de um gerenciador de investimentos desenvolvido em Angular. Ele permite que o usuário possa cadastrar seus investimentos e acompanhar o desempenho de sua carteira.
 
-## Development server
+## Como executar o projeto
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1. Certifique-se de ter o Node.js instalado em sua máquina. Caso não tenha, você pode fazer o download em: [https://nodejs.org/](https://nodejs.org/)
 
-## Code scaffolding
+2. Clone este repositório em sua máquina:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+git clone https://github.com/seu-usuario/gerenciador-investimentos.git
 
-## Build
+3. Instale as dependências do projeto:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+cd gerenciador-investimentos
+npm install
 
-## VsCode Config
-Auto import: https://medium.com/como-configurar-o-vscode-para-organizar-os-imports/como-configurar-o-vscode-para-organizar-os-imports-e-indentar-o-c%C3%B3digo-ao-salvar-o-arquivo-a6634a545db8
+4. Inicie o servidor de desenvolvimento:
+
+
+5. Abra o navegador e acesse a URL: [http://localhost:4200/](http://localhost:4200/)
+
+## Como contribuir
+
+1. Faça um fork deste repositório.
+
+2. Crie uma nova branch com a funcionalidade que deseja implementar:
+
+git checkout -b nova-funcionalidade
+
+5. Faça um push das suas alterações para o seu fork:
+
+git push origin nova-funcionalidade
+
+
+6. Abra um pull request neste repositório para que suas alterações sejam analisadas e incorporadas ao projeto.
+
+## Licença
+
+Este projeto está licenciado sob a Licença MIT. Consulte o arquivo [LICENSE](LICENSE) para obter mais detalhes.

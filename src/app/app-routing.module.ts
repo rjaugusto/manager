@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AcoesComponent } from './components/acoes/acoes.component';
+import { AcoesComponent } from './components/acoes/acoes/acoes.component';
 import { DashboardContentComponent } from './components/dashboard-content/dashboard-content.component';
 
 const routes: Routes = [

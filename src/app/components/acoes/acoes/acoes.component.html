@@ -1,0 +1,90 @@
+<main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Ações</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/">Dashboard</a></li>
+        <li class="breadcrumb-item">Acoes</li>
+
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+  <section class="section">
+    <div class="col-lg-12">
+    <div class="card">
+      <div class="card-body">
+        <h1 class="card-title">Incluir Transação</h1>
+
+        <!-- Vertical Form -->
+        <form class="row g-3">
+          <div class="col-3">
+            <label for="trasacaoData" class="form-label">Data</label>
+            <input type="date" class="form-control" id="trasacaoData">
+          </div>
+          <div class="col-3">
+            <label for="transacaoTipo" class="form-label">Tipo de Transação</label>
+            <select class="form-select" aria-label="Default select example">
+              <option selected="">Selecione</option>
+              <option value="compra">Compra</option>
+              <option value="venda">Venda</option>
+            </select>
+          </div>
+          <div class="col-3">
+            <label for="transacaoQuantidade" class="form-label">Quantidade</label>
+            <input type="number" class="form-control" id="transacaoQuantidade">
+          </div>
+          <div class="col-3">
+            <label for="transacaoPreco" class="form-label">Preço</label>
+            <input type="text" class="form-control" id="transacaoPreco" >
+          </div>
+          <div class="col-3">
+            <label for="transacaoTaxas" class="form-label">Taxas</label>
+            <input type="text" class="form-control" id="transacaoTaxas" >
+          </div>
+          <div class="col-3">
+            <label for="transacaoValorOrdem" class="form-label">Valor da Ordem</label>
+            <input type="text" class="form-control" id="transacaoValorOrdem" disabled>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Salvar</button>
+          </div>
+        </form><!-- Vertical Form -->
+
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="card">
+    <div class="card-body">
+      <h1 class="card-title">Últimas Transações</h1>
+
+      <!-- Default Table -->
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Data</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Quantidade</th>
+            <th scope="col">Preço</th>
+            <th scope="col">Taxas</th>
+            <th scope="col">Valor da Ordem</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">26/03/2023</th>
+            <td>Compra</td>
+            <td>1000</td>
+            <td>R$ 28,50</td>
+            <td>R$ 0,50</td>
+            <td>R$ 2900,00</td>
+          </tr>
+
+        </tbody>
+      </table>
+      <!-- End Default Table Example -->
+    </div>
+  </div>
+</section>
+</main>

@@ -1,0 +1,9 @@
+.centered-info span {
+  margin-right: 5px;
+  font-family: "Poppins", sans-serif;
+  color: #012970;
+}
+
+.centered-info span:nth-child(2n) {
+  margin-right: 50px;
+}

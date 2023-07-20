@@ -10,11 +10,13 @@
     </nav>
   </div><!-- End Page Title -->
   <section class="section">
-    <div class="col-lg-12">
+
+    <div class="row">
+
+    <div class="col-lg-6">
     <div class="card">
       <div class="card-body">
         <h1 class="card-title">Incluir Transação</h1>
-
         <!-- Vertical Form -->
         <form class="row g-3">
           <div class="col-3">
@@ -46,18 +48,24 @@
             <input type="text" class="form-control" id="transacaoValorOrdem" disabled>
           </div>
           <div class="text-center">
-            <button type="submit" class="btn btn-primary">Salvar</button>
+            <button type="submit" class="btn btn-primary" (click)="salvaTransaction()">Salvar</button>
           </div>
         </form><!-- Vertical Form -->
 
       </div>
     </div>
   </div>
-</section>
-<section>
+
+  <div class="col-lg-6">
   <div class="card">
     <div class="card-body">
       <h1 class="card-title">Últimas Transações</h1>
+
+      <ul>
+        <li *ngFor="let transaction of transactions$ | async">
+          {{ transaction.id }} - {{ transaction.quantidade }}
+        </li>
+      </ul>
 
       <!-- Default Table -->
       <table class="table">
@@ -80,11 +88,12 @@
             <td>R$ 0,50</td>
             <td>R$ 2900,00</td>
           </tr>
-
         </tbody>
       </table>
       <!-- End Default Table Example -->
     </div>
   </div>
+  </div>
+</div>
 </section>
 </main>

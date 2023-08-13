@@ -21,23 +21,40 @@
         <form class="row g-3">
           <div class="col-3">
             <label for="trasacaoData" class="form-label">Data</label>
-            <input type="date" class="form-control" id="trasacaoData">
+            <input type="date" [(ngModel)]="transaction.transactionDate"  name="transactionDate" class="form-control" id="trasacaoData">
           </div>
           <div class="col-3">
             <label for="transacaoTipo" class="form-label">Tipo de Transação</label>
-            <select class="form-select" aria-label="Default select example">
+            <select class="form-select" [(ngModel)]="transaction.transactionType" name="transactionType" aria-label="Default select example">
               <option selected="">Selecione</option>
-              <option value="compra">Compra</option>
-              <option value="venda">Venda</option>
+              <option value="0">Compra</option>
+              <option value="1">Venda</option>
             </select>
           </div>
           <div class="col-3">
+            <label for="transacaoTipo" class="form-label">Tipo de Ativo</label>
+            <select class="form-select" [(ngModel)]="transaction.assetType" name="assetType" aria-label="Default select example">
+              <option selected="">Selecione</option>
+              <option value="BRAZILIAN_STOCK">Ação</option>
+              <option value="FIXED_INCOME">Renda Fixa</option>
+              <option value="FII">Fundo Imobiliário</option>
+              <option value="USA_STOCK">Ação USA</option>
+              <option value="ETF_USA">ETF USA</option>
+              <option value="CRYPTO">Crypto</option>
+
+            </select>
+          </div>
+          <div class="col-3">
+            <label for="tickerQuantidade" class="form-label">Ticker </label>
+            <input type="text" class="form-control" id="tickerQuantidade">
+          </div>
+          <div class="col-3">
             <label for="transacaoQuantidade" class="form-label">Quantidade</label>
-            <input type="number" class="form-control" id="transacaoQuantidade">
+            <input type="number" class="form-control" [(ngModel)]="transaction.quantity" id="quantity" name="quantity">
           </div>
           <div class="col-3">
             <label for="transacaoPreco" class="form-label">Preço</label>
-            <input type="text" class="form-control" id="transacaoPreco" >
+            <input type="text" class="form-control" [(ngModel)]="transaction.price" id="price" name="price" >
           </div>
           <div class="col-3">
             <label for="transacaoTaxas" class="form-label">Taxas</label>
@@ -63,7 +80,7 @@
 
       <ul>
         <li *ngFor="let transaction of transactions$ | async">
-          {{ transaction.id }} - {{ transaction.quantidade }}
+          {{ transaction.id }} - {{ transaction.quantity }}
         </li>
       </ul>
 
@@ -73,6 +90,8 @@
           <tr>
             <th scope="col">Data</th>
             <th scope="col">Tipo</th>
+            <th scope="col">Ativo</th>
+            <th scope="col">Ticker</th>
             <th scope="col">Quantidade</th>
             <th scope="col">Preço</th>
             <th scope="col">Taxas</th>
@@ -83,6 +102,8 @@
           <tr>
             <th scope="row">26/03/2023</th>
             <td>Compra</td>
+            <td>Ação</td>
+            <td>BBAS3</td>
             <td>1000</td>
             <td>R$ 28,50</td>
             <td>R$ 0,50</td>

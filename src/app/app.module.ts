@@ -6,12 +6,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AcoesComponent } from './components/acoes/acoes/acoes.component';
+
 import { DashboardContentComponent } from './components/dashboard-content/dashboard-content.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TopbarComponent } from './components/topbar/topbar.component';
+import { TransactionComponent } from './components/transaction/transaction/transaction.component';
 
 
 
@@ -24,7 +25,7 @@ import { TopbarComponent } from './components/topbar/topbar.component';
     TopbarComponent,
     FooterComponent,
     DashboardContentComponent,
-    AcoesComponent
+    TransactionComponent
 
   ],
   imports: [

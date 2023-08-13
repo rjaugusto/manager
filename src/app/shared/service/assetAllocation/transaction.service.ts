@@ -15,9 +15,7 @@ export class AssetAllocationAPIService {
         })
       };
 
-    constructor(
-        private httpClient: HttpClient
-    ) {
+    constructor(private httpClient: HttpClient) {
 
     }
 

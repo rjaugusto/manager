@@ -12,6 +12,7 @@ export class TopbarComponent implements OnInit {
   taxas: Taxa[] = [];
   erro: string | null = null;
 
+
   constructor(private brasilAPIService: BrasilAPIService) { }
 
   ngOnInit(): void {

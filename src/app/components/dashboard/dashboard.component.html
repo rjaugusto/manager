@@ -1,19 +1,5 @@
 
 <app-topbar></app-topbar>
-
 <app-sidebar></app-sidebar>
 <router-outlet></router-outlet>
-<div>
-  <div *ngIf="taxas">
-    <h1>Taxas</h1>
-    <ul>
-      <li *ngFor="let taxa of taxas">{{ taxa.nome }}: {{ taxa.valor }}</li>
-    </ul>
-  </div>
-  <div *ngIf="erro">
-    <p>{{ erro }}</p>
-  </div>
-
-</div>
-
 <app-footer></app-footer>

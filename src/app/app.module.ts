@@ -13,6 +13,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { TransactionComponent } from './components/transaction/transaction/transaction.component';
+import { AcoesComponent } from './components/acoes/acoes.component';
 
 
 
@@ -25,7 +26,8 @@ import { TransactionComponent } from './components/transaction/transaction/trans
     TopbarComponent,
     FooterComponent,
     DashboardContentComponent,
-    TransactionComponent
+    TransactionComponent,
+    AcoesComponent
 
   ],
   imports: [

@@ -1,10 +1,10 @@
 <main id="main" class="main">
   <div class="pagetitle">
-    <h1>Ações</h1>
+    <h1>Transações</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a routerLink="/">Dashboard</a></li>
-        <li class="breadcrumb-item">Acoes</li>
+        <li class="breadcrumb-item">Ações</li>
 
       </ol>
     </nav>
@@ -45,24 +45,24 @@
             </select>
           </div>
           <div class="col-3">
-            <label for="tickerQuantidade" class="form-label">Ticker </label>
-            <input type="text" class="form-control" id="tickerQuantidade">
+            <label for="ticker" class="form-label">Ticker </label>
+            <input type="text" class="form-control" [(ngModel)]="transaction.ticker" id="ticker" name="ticker">
           </div>
           <div class="col-3">
-            <label for="transacaoQuantidade" class="form-label">Quantidade</label>
-            <input type="number" class="form-control" [(ngModel)]="transaction.quantity" id="quantity" name="quantity">
+            <label for="Quantidade" class="form-label">Quantidade</label>
+            <input type="number" class="form-control" [(ngModel)]="transaction.quantity" (blur)="somaTotal(transaction.price,transaction.quantity,transaction.tax)" id="quantity" name="quantity">
           </div>
           <div class="col-3">
-            <label for="transacaoPreco" class="form-label">Preço</label>
-            <input type="text" class="form-control" [(ngModel)]="transaction.price" id="price" name="price" >
+            <label for="Preco" class="form-label">Preço</label>
+            <input type="number" class="form-control" [(ngModel)]="transaction.price" (blur)="somaTotal(transaction.price,transaction.quantity,transaction.tax)" id="price" name="price" >
           </div>
           <div class="col-3">
-            <label for="transacaoTaxas" class="form-label">Taxas</label>
-            <input type="text" class="form-control" id="transacaoTaxas" >
+            <label for="Taxas" class="form-label">Taxas</label>
+            <input type="number" class="form-control" [(ngModel)]="transaction.tax"  (blur)="somaTotal(transaction.price,transaction.quantity,transaction.tax)" id="tax" name="tax" >
           </div>
           <div class="col-3">
             <label for="transacaoValorOrdem" class="form-label">Valor da Ordem</label>
-            <input type="text" class="form-control" id="transacaoValorOrdem" disabled>
+            <input type="text" class="form-control" [(ngModel)]="total" id="transacaoValorOrdem" name= "total" disabled>
           </div>
           <div class="text-center">
             <button type="submit" class="btn btn-primary" (click)="salvaTransaction()">Salvar</button>

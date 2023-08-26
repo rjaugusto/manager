@@ -21,13 +21,23 @@ export class TransactionComponent implements OnInit {
     quantity: 0,
     transactionType: TransactionType.BUY,
     assetType: AssetType.BRAZILIAN_STOCK,
-    transactionDate: new Date()
+    transactionDate: new Date(),
+    tax:0,
+    ticker:""
+
   };
+
+  total:number = 0;
+
 
   constructor(private assetAllocationService: AssetAllocationAPIService) { }
 
   ngOnInit(): void {
     this.loadTransactions();
+  }
+
+  somaTotal(price:number,quantity:number,tax:number){
+     this.total = (price*quantity)+tax;
   }
 
   salvaTransaction(): void {

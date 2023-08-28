@@ -1,5 +1,97 @@
 <main id="main" class="main">
   <div class="pagetitle">
-    <h1>Ações</h1>
+    <h1>Transações</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/">Dashboard</a></li>
+        <li class="breadcrumb-item">Ações</li>
+
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+  <section class="section">
+
+    <div class="row">
+
+    <div class="col-lg-6">
+    <div class="card">
+      <div class="card-body">
+        <h1 class="card-title">Incluir Transação</h1>
+        <!-- Vertical Form -->
+        <form class="row g-3">
+          <div class="col-3">
+            <label for="trasacaoData" class="form-label">Data</label>
+            <input type="date" [(ngModel)]="brazilianStock.transactionDate"  name="transactionDate" class="form-control" id="trasacaoData">
+          </div>
+          <div class="col-3">
+            <label for="transacaoTipo" class="form-label">Tipo de Transação</label>
+            <select class="form-select" [(ngModel)]="brazilianStock.transactionType" name="transactionType" aria-label="Default select example">
+              <option selected="">Selecione</option>
+              <option value="0">Compra</option>
+              <option value="1">Venda</option>
+            </select>
+          </div>
+          <div class="col-3">
+            <label for="ticker" class="form-label">Ticker </label>
+            <input type="text" class="form-control" [(ngModel)]="brazilianStock.ticker" id="ticker" name="ticker">
+          </div>
+          <div class="col-3">
+            <label for="Quantidade" class="form-label">Quantidade</label>
+            <input type="number" class="form-control" [(ngModel)]="brazilianStock.quantity" (blur)="somaTotal(brazilianStock.price,brazilianStock.quantity,brazilianStock.tax)" id="quantity" name="quantity">
+          </div>
+          <div class="col-3">
+            <label for="Preco" class="form-label">Preço</label>
+            <input type="number" class="form-control" [(ngModel)]="brazilianStock.price" (blur)="somaTotal(brazilianStock.price,brazilianStock.quantity,brazilianStock.tax)" id="price" name="price" >
+          </div>
+          <div class="col-3">
+            <label for="Taxas" class="form-label">Taxas</label>
+            <input type="number" class="form-control" [(ngModel)]="brazilianStock.tax"  (blur)="somaTotal(brazilianStock.price,brazilianStock.quantity,brazilianStock.tax)" id="tax" name="tax" >
+          </div>
+          <div class="col-3">
+            <label for="transacaoValorOrdem" class="form-label">Valor da Ordem</label>
+            <input type="text" class="form-control" [(ngModel)]="total" id="transacaoValorOrdem" name= "total" disabled>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary" (click)="salvaTransaction()">Salvar</button>
+          </div>
+        </form><!-- Vertical Form -->
+
+      </div>
+    </div>
   </div>
+
+  <div class="col-lg-6">
+  <div class="card">
+    <div class="card-body">
+      <h1 class="card-title">Últimas Transações</h1>
+
+      <!-- Default Table -->
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Transaction Type</th>
+            <th>Transaction Date</th>
+            <th>Tax</th>
+            <th>Ticker</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let stock of (transactions$ | async)">
+            <td>{{ stock.quantity }}</td>
+            <td>{{ stock.price }}</td>
+            <td>{{ stock.transactionType }}</td>
+            <td>{{ stock.transactionDate | date:'short' }}</td>
+            <td>{{ stock.tax }}</td>
+            <td>{{ stock.ticker }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- End Default Table Example -->
+    </div>
+  </div>
+  </div>
+</div>
+</section>
 </main>
